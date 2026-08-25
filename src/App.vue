@@ -1,4 +1,8 @@
 <script setup>
+import { ref } from 'vue'
+import StudentForm from './components/StudentForm.vue';
+import StudentDisplay from './components/StudentDisplay.vue';
+
 
 // import HelloWorld from './components/HelloWorld.vue'
 // import SampleCom from './components/SampleCom.vue';
@@ -10,18 +14,20 @@
 // import TeacherCard from './components/TeacherCard.vue';
 // import Studentcard from './components/Studentcard.vue';
 // import FormActivity from './components/FormActivity.vue';
-import BookRequestForm from './components/BookRequestForm.vue';
+// import BookRequestForm from './components/BookRequestForm.vue';
+const studentData = ref()
+
+function studentSubmitted(student) {
+  studentData.value = student
+  console.log('Student submitted: ', studentData.value)
+}
+
 function receiveStudent(student) {
-  console.log(student.name)
-  console.log(student.id)
-  console.log(student.email)
-  console.log(student.bookCategory)
-  console.log(student.requestType)
-  console.log(student.reason)
+  studentData.value = student
   
-  alert(`Student: ${student.name}, Student ID: ${student.id}`)
-  alert(`Email: ${student.email}, Book Category: ${student.bookCategory}`)
-  alert(`Request Type: ${student.requestType}, Reason: ${student.reason}`)
+  // alert(`Student: ${student.name}, Student ID: ${student.id}`)
+  // alert(`Email: ${student.email}, Book Category: ${student.bookCategory}`)
+  // alert(`Request Type: ${student.requestType}, Reason: ${student.reason}`)
 
 }
 // function showMessage() {
@@ -57,9 +63,13 @@ function receiveStudent(student) {
  <!-- <FormActivity
  @submitStudent="receiveStudent"
  /> -->
- <BookRequestForm
+ <div>
+  <h1>Student Form</h1>
+ <StudentForm
  @submitStudent="receiveStudent"
  />
+ <StudentDisplay :student="studentData" />
+ </div>
 </template>
 
 <!-- <style>

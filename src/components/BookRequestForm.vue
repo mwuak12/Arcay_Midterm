@@ -49,8 +49,8 @@ function submitForm() {
       <option>Networking</option>
       <option>Software Engineering</option>
     </select>
-     <input type="radio" value="Yes" v-model="acceptedTerms" />
-   <input type="radio" value="No" v-model="acceptedTerms" />
+     <input type="radio" value="Yes" />
+   <input type="radio" value="No"/>
    
     <label>Request Type:</label>
     <select v-model="requestType">
@@ -68,7 +68,7 @@ function submitForm() {
     
 
 
-  <button type="submit">Submit Request</button>
+  <button @click="submitForm">Submit Request</button>
 
  
   <div>
